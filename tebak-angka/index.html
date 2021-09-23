@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tebak Angka | By: Arry</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: cursive;
+        }
+
+        #container {
+            width: 500px;
+            height: auto;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -250px;
+            margin-left: -250px;
+            background-color: #EAD7C7;
+            padding: 20px;
+            border: 3px solid #002939;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #157575;
+        }
+
+        p {
+            margin: 20px 0 10px;
+        }
+
+        input[type=number] {
+            border: 1px solid #eee;
+            border-radius: 5px;
+            width: 100%;
+            padding: 15px 15px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            padding: 10px 10px;
+            background-color: #157575;
+            color: whitesmoke;
+            border: none;
+            border-radius: 4px;
+            font-size: medium;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <h1>Tebak Angka</h1>
+        <p>Coba Tebak Angka Berapa (1 - 100).</p>
+        <input type="number" id="numberValue" min="0" max="100">
+        <p id="msg1">Angka Yang Sudah Dipilih : </p>
+        <p id="msg2"></p>
+        <input type="submit" onclick="play()" value="Coba Angka">
+    </div>
+</body>
+
+<script>
+    var msg1 = document.getElementById("msg1");
+    var msg2 = document.getElementById("msg2");
+    var number = Math.floor(Math.random() * 101);
+
+    function play() {
+        var numberValue = document.getElementById("numberValue").value;
+        msg1.innerHTML += numberValue + " ";
+
+        if (numberValue < number) {
+            msg2.innerHTML = "Tambah lagi angkanya!";
+        } else if (numberValue > number) {
+            msg2.innerHTML = "Kurangi lagi angkanya!";
+        } else {
+            alert("Angkanya Benar ! ( " + numberValue + " ).");
+            if (confirm("Ulangi ?")) {
+                location.reload();
+            }
+        }
+    }
+</script>
+
+</html>
